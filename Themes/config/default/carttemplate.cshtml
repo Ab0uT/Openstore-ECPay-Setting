@@ -1,0 +1,45 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Portals
+@using DotNetNuke.Entities.Users
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+@using OS_AllShipping.Models;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/OS_AllShipping/App_LocalResources")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+@{
+    NBrightInfo info = (NBrightInfo)Model.List.First();
+
+}
+
+<div class="form-horizontal dnnForm os_allshipping_shipdata">
+    <nav aria-label="breadcrumb">
+        <input id="uilang" type="hidden" value="@Model.Lang" />
+    </nav>
+
+    <input id="OS_AllShippingaddress" type="hidden" value="" />
+    @NBrightTextBox(info, "genxml/pickup/genxml/textbox/logisticstype", "type=\"hidden\"")
+    @NBrightTextBox(info, "genxml/pickup/genxml/textbox/cvsstoreid", "type=\"hidden\"")
+    @NBrightTextBox(info, "genxml/pickup/genxml/textbox/cvstelephone", "type=\"hidden\"")
+    @NBrightTextBox(info, "genxml/pickup/genxml/textbox/cvsaddress", "type=\"hidden\"")
+    @NBrightTextBox(info, "genxml/pickup/genxml/textbox/extradata", "type=\"hidden\"")
+    @NBrightTextBox(info, "genxml/pickup/genxml/textbox/logisticssubtype", "type=\"hidden\"", Merchant.HomeSubType)
+    <div id="pickupForm" style="display:none">
+        <a id="emapSubmit" class="btn btn-secondary" href="javascript:void(0);">超商地圖</a>
+        <div class="form-group">
+            <label>超商店名</label>
+            @NBrightTextBox(info, "genxml/pickup/genxml/textbox/cvsstorename", "disabled  class=\"form-control\"")
+        </div>
+    </div>
+</div>
+<script>
+    var moduleId = parseInt("[ModuleContext:ModuleId]");
+    var sf = $.ServicesFramework(moduleId);
+    var apiRoot = sf.getServiceRoot("OS_AllShipping");
+</script>
+<script type="text/javascript" src="/DesktopModules/NBright/OS_AllShipping/Themes/config/js/getStoreMap.js"></script>

@@ -1,0 +1,73 @@
+﻿<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="OS_AllShipping" type="Module" version="2.0.2">
+      <friendlyName>OS_AllShipping</friendlyName>
+      <description>OS_AllShipping: OS_AllShipping Shipping provider for NBrightStore</description>
+      <iconFile />
+      <owner>
+        <name>David Lee</name>
+        <organization>Nevoweb</organization>
+        <url>www.nevoweb.com</url>
+        <email>info@nevoweb.com</email>
+      </owner>
+      <license>
+        THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+        YOU MAY NOT REDISTRIBUTE, NOT VIEW THE SOURCE CODE, NOT COPY THIS SOFTWARE.
+      </license>
+      <releaseNotes>v1.0.0</releaseNotes>
+      <components>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules\NBright\OS_AllShipping</basePath>
+            <resourceFile>
+              <name>Resource.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <name>OS_AllShipping.dll</name>
+              <sourceFileName>OS_AllShipping.dll</sourceFileName>
+            </assembly>
+          </assemblies>
+        </component>
+        <component type="File">
+          <files>
+            <basePath>DesktopModules\NBright\NBrightBuy\Plugins</basePath>
+            <file>
+              <path></path>
+              <name>pluginOS_AllShipping.xml</name>
+              <sourceFileName>pluginOS_AllShipping.xml</sourceFileName>
+            </file>
+          </files>
+        </component>
+        <!--<component type="Module">
+          <desktopModule>
+            <moduleName>AllShipping.PickupProvider</moduleName>
+            <foldername>NBright/OS_AllShipping</foldername>
+            <businessControllerClass/>
+            <supportedFeatures/>
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>PickupProvider</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <controlKey />
+                  <controlSrc>DesktopModules/NBright/OS_AllShipping/MapProvider/PickupRrovider/Views/GetValue.html</controlSrc>
+                  <supportsPartialRendering>False</supportsPartialRendering>
+                  <controlTitle />
+                  <controlType>View</controlType>
+                  <iconFile />
+                  <helpUrl/>
+                  <supportsPopUps>False</supportsPopUps>
+                  <viewOrder>0</viewOrder>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>-->
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>

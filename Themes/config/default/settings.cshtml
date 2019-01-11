@@ -1,0 +1,45 @@
+﻿@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Portals
+@using DotNetNuke.Entities.Users
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+@AddMetaData("resourcepath", "/DesktopModules/NBright/OS_AllShipping/App_LocalResources")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+@{
+    var info = (NBrightInfo)Model.List.First();
+}
+<script type="text/javascript" src="//s.trackingmore.com/plugins/v1/pluginsCss.js?time=20180329"></script>
+<script type="text/javascript" src="//s.trackingmore.com/plugins/v1/plugins.min.js"></script>
+<script type="text/javascript" src="/DesktopModules/NBright/OS_AllShipping/Themes/config/js/OS_AllShipping.js"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.fileupload.js"></script>
+
+<br />
+<div id="loader" class="processing" style="display:none;">@ResourceKey("General.ProcessingDiv")</div>
+<div id="pageactionssource">
+    <!-- Page actions are moved into header bar - also exist at page bottom-->
+
+    <div class="col-xs-9 col-sm-9">
+        <a href="#" class="show-sidebar">
+            <i class="fa fa-bars"></i>
+        </a>
+        <div class="actionbuttonwrapper">
+            <a id="OS_AllShipping_cmdSave" class="btn btn-primary" href="javascript:void(0);">@ResourceKey("General.cmdSaveButton")</a>
+        </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 top-panel-right">
+        @EditLangaugeButton();
+    </div>
+</div>
+
+<div class="OS_AllShippingdata">
+    <input id="itemid" type="hidden" value="@info.ItemID" />
+    <input id="uilang" type="hidden" value="@Model.Lang" />
+    <input id="nextlang" type="hidden" value="@Model.Lang" />
+    <input id="ctrl" type="hidden" update="save" value="os_allshipping" />
+    @RenderTemplate("\\DesktopModules\\NBright\\OS_AllShipping\\Themes\\config\\Default\\settingsfields.cshtml", Model)
+</div>
+
+

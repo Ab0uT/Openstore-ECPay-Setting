@@ -1,0 +1,44 @@
+﻿<dotnetnuke type="ResourceFile" version="5.0">
+  <files>
+    <file>
+      <path>Themes/config/js/</path>
+      <name>getStoreMap.js</name>
+    </file>
+    <file>
+      <path>Themes/config/js/</path>
+      <name>OS_AllShipping.js</name>
+    </file>
+    <file>
+      <path>Themes/config/default/</path>
+      <name>carttemplate.cshtml</name>
+    </file>
+    <file>
+      <path>Themes/config/default/</path>
+      <name>settings.cshtml</name>
+    </file>
+    <file>
+      <path>Themes/config/default/</path>
+      <name>settingsfields.cshtml</name>
+    </file>
+    <file>
+      <path>Themes/config/css/</path>
+      <name>module.css</name>
+    </file>
+    <file>
+      <path>Plugins/</path>
+      <name>pluginOS_AllShipping.xml</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>Admin.ascx.resx</name>
+    </file>
+    <file>
+      <path />
+      <name>OS_AllShippingAdmin.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>pluginOS_AllShipping.xml</name>
+    </file>
+  </files>
+</dotnetnuke>

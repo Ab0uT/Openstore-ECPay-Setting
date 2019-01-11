@@ -1,0 +1,205 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Common
+@using System.Web.Razor.Parser.SyntaxTree
+@using DotNetNuke.Entities.Portals
+@using DotNetNuke.Entities.Users
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+@using OS_AllShipping.Models
+@AddMetaData("resourcepath", "/DesktopModules/NBright/OS_AllShipping/App_LocalResources")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Providers/ShippingProvider/App_LocalResources/")
+@{
+    NBrightInfo info = (NBrightInfo)Model.List.First();
+}
+<div id="datadisplay"></div>
+
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i><span>連結</span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                    <a class="close-link"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="no-move">
+                </div>
+            </div>
+            <div class="box-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">物流訂單()</label>
+                            @NBrightTextBox(info, "genxml/textbox/create")
+                            <p class="help-block">正式環境 https://logistics.ecpay.com.tw/Express/Create</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">宅配逆物流訂單</label>
+                            @NBrightTextBox(info, "genxml/textbox/returnhome")
+                            <p class="help-block">正式環境 https://logistics.ecpay.com.tw/Express/ReturnHome</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">全家逆物流訂單</label>
+                            @NBrightTextBox(info, "genxml/textbox/returnfami")
+                            <p class="help-block">正式環境 https://logistics.ecpay.com.tw/express/ReturnCVS</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">統一超商(7-11)逆物流訂單</label>
+                            @NBrightTextBox(info, "genxml/textbox/returnunimart")
+                            <p class="help-block">正式環境 https://logistics.ecpay.com.tw/express/ReturnUniMartCVS</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">物流訂單查詢</label>
+                            @NBrightTextBox(info, "genxml/textbox/tradeinfo")
+                            <p class="help-block">正式環境 https://logistics.ecpay.com.tw/Helper/QueryLogisticsTradeInfo/V2</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">列印宅配、超商標籤()</label>
+                            @NBrightTextBox(info, "genxml/textbox/printtradedocument")
+                            <p class="help-block">正式環境 https://logistics.ecpay.com.tw/helper/printTradeDocument</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">列印繳款單(統一超商C2C)</label>
+                            @NBrightTextBox(info, "genxml/textbox/c2cprintunimart")
+                            <p class="help-block">正式環境 https://logistics.ecpay.com.tw/Express/PrintUniMartC2COrderInfo</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">全家列印小白單(全家超商C2C)</label>
+                            @NBrightTextBox(info, "genxml/textbox/c2cprintfami")
+                            <p class="help-block">正式環境 https://logistics.ecpay.com.tw/Express/PrintFAMIC2COrderInfo</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">電子地圖</label>
+                            @NBrightTextBox(info, "genxml/textbox/emap")
+                            <p class="help-block">正式環境 https://logistics.ecpay.com.tw/Express/map</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-6 col-sm-6">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i><span>廠商資訊</span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                    <a class="close-link"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="no-move">
+                </div>
+            </div>
+            <div class="box-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label">啟用</label>
+                            @DropDownList(info, "genxml/dropdownlist/enable", "true,false","啟用,停用","class='form-control'")
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">滿額免運費</label>
+                            @NBrightTextBox(info, "genxml/textbox/freecost", "datatype='double'", "0")
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="control-label"><span class="text-danger">*</span>宅配運費</label>
+                                    @NBrightTextBox(info, "genxml/textbox/homecost", "datatype='double'", "0")
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="control-label"><span class="text-danger">*</span>宅配物流</label>
+                                    @DropDownList(info, "genxml/dropdownlist/homesubtype", "TCAT,ECAN", "黑貓宅配,大嘴鳥宅配", "class='form-control'")
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label class="control-label"><span class="text-danger">*</span>7-11運費</label>
+                                    @NBrightTextBox(info, "genxml/textbox/unimartcost", "datatype='double'", "0")
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="control-label"><span class="text-danger">*</span>全家運費</label>
+                                    @NBrightTextBox(info, "genxml/textbox/famicost", "datatype='double'", "0")
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="control-label"><span class="text-danger">*</span>萊爾富運費</label>
+                                    @NBrightTextBox(info, "genxml/textbox/hilifecost", "datatype='double'", "0")
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">廠商代號(Merchant ID)</label>
+                            @NBrightTextBox(info, "genxml/textbox/merchantid", "maxlength='10'")
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">金鑰(Hash Key)</label>
+                            @NBrightTextBox(info, "genxml/textbox/hashkey")
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">向量(Hash IV)</label>
+                            @NBrightTextBox(info, "genxml/textbox/hashkiv")
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">類型</label>
+                            @DropDownList(info, "genxml/dropdownlist/type","B,C","B2C,C2C","class='form-control'")
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">寄件人姓名(Sender Name)</label>
+                            @NBrightTextBox(info, "genxml/textbox/sendername")
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">寄件人電話(Sender Phone)</label>
+                            @NBrightTextBox(info, "genxml/textbox/senderphone")
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">寄件人手機(Sender Cell Phone)</label>
+                            @NBrightTextBox(info, "genxml/textbox/sendercellphone")
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label class="control-label">郵遞區號</label>
+                                    @NBrightTextBox(info, "genxml/textbox/senderzipcode")
+                                </div>
+                                <div class="col-sm-9">
+                                    <label class="control-label"><span class="text-danger">*</span>寄件人地址</label>
+                                    @NBrightTextBox(info, "genxml/textbox/senderaddress")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    $(document).ready(function () {
+        var enable = $('#enable').is(':checked');
+        var b_input = $('input[id^=""]');
+
+        if (enable == false) {
+            b_input.prop('disabled', true);
+        }
+        else {
+            b_input.prop('disabled', false);
+        }
+
+    });
+</script>
